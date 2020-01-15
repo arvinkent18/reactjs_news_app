@@ -20,9 +20,9 @@ To start application please run **npm run dev**
 ## Built With
 
 * [Express](https://www.express.com/) - The back-end web framework used
-* [Node.js](https://nodejs.org/) - Dependency Management/Back-end
+* [Node.js](https://nodejs.org/) - Dependency management/back-end used
 * [ReactJS](https://reactjs.org/) - The front-end web framework used
-* [Redux](https://redux.js.org/) - The State Manager used
+* [Redux](https://redux.js.org/) - The state manager used
 
 ## Authors
 
