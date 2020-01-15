@@ -18,6 +18,7 @@ To start application please run **npm run dev**
 ### Prerequisites
 
 * [Node.js](https://www.nodejs.org/)
+* [NewsAPI](https://newsapi.org/)
 
 ## Testing
 * [Postman](https://www.getpostman.com/) - The application used for testing RESTFul APIs
@@ -28,7 +29,6 @@ To start application please run **npm run dev**
 * [Node.js](https://nodejs.org/) - Dependency management/back-end used
 * [ReactJS](https://reactjs.org/) - The front-end web framework used
 * [Redux](https://redux.js.org/) - The state manager used
-* [NewsAPI](https://newsapi.org/) - The API being used
 
 ## Authors
 
