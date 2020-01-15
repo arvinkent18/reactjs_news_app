@@ -3,11 +3,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { NavLink } from 'react-router-dom';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route
-} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchSources } from '../actions/sourceActions';
 
@@ -29,15 +24,13 @@ class Sources extends Component {
 
         return (
             <div>
-                <Router>
-                    <List>
-                        {sources.map(source => 
-                            <ListItem key={source.id} button component={NavLink} to={`/source/${source.name}`}>
-                                <ListItemText primary={source.name} />
-                            </ListItem>
-                        )}
-                    </List>                  
-                </Router>
+                <List>
+                    {sources.map(source => 
+                        <ListItem key={source.id} button component={NavLink} to={`/source/${source.name}`}>
+                            <ListItemText primary={source.name} />
+                        </ListItem>
+                    )}
+                </List>    
             </div> 
         );
     }
