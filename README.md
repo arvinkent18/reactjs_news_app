@@ -1,7 +1,7 @@
 # reactjs_news_app
 # News Feed Application
 
-A ReactJS web application that fetches updated news from different sources using the **News API**.
+A ReactJS web application with Redux that fetches updated news from different sources using the **News API**.
 
 ## Getting Started
 
