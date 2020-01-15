@@ -7,7 +7,7 @@ A ReactJS web application with Redux that fetches updated news from different so
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-Clone or Download as Zip then run **npm install** and **npm run client-install** to install dependencies
+Clone or Download as Zip then run **npm install** and **cd to client folder then npm run client-install** to install dependencies
 
 ## Note
 Create variables.env file at the root directory of the project with the following details: 
