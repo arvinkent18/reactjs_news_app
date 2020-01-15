@@ -10,7 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 Clone or Download as Zip then run **npm install** and **npm client-install** to install dependencies
 
 ## Note
-Create variables.env file at the root file of the project with the following details: 
+Create variables.env file at the root directory of the project with the following details: 
 ![ScreenShot](https://user-images.githubusercontent.com/32665778/72413866-babb6500-37ab-11ea-8d03-5a7fb70027c7.PNG)
 
 To start application please run **npm run dev**
