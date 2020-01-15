@@ -1,7 +1,7 @@
 # reactjs_news_app
 # News Feed Application
 
-A ReactJS web application that fetches updates news from different sources using the **"News API"**.
+A ReactJS web application that fetches updated news from different sources using the **News API**.
 
 ## Getting Started
 
@@ -23,6 +23,7 @@ To start application please run **npm run dev**
 * [Node.js](https://nodejs.org/) - Dependency management/back-end used
 * [ReactJS](https://reactjs.org/) - The front-end web framework used
 * [Redux](https://redux.js.org/) - The state manager used
+* [NewsAPI](https://newsapi.org/) - The API being used
 
 ## Authors
 
