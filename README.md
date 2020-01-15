@@ -36,6 +36,7 @@ To start application please run **npm run dev**
 * [Node.js](https://nodejs.org/) - Dependency management/back-end used
 * [ReactJS](https://reactjs.org/) - The front-end web framework used
 * [Redux](https://redux.js.org/) - The state manager used
+* [Material UI](https://material-ui.com/) - The React component for material design
 
 ## Authors
 
