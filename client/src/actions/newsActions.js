@@ -19,7 +19,7 @@ export const fetchNewsFailure = error => ({
 export function fetchNews() {
     return dispatch => {
         dispatch(fetchNewsBegin());
-        return fetch('http://localhost:5000/news')
+        return fetch('/news')
         .then(handleErrors)
         .then(res => res.json())
         .then(json => {

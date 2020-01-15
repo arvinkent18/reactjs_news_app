@@ -19,7 +19,7 @@ export const fetchSourcesFailure = error => ({
 export function fetchSources() {
     return dispatch => {
         dispatch(fetchSourcesBegin());
-        return fetch('http://localhost:5000/sources')
+        return fetch('/sources')
         .then(handleErrors)
         .then(res => res.json())
         .then(json => {
