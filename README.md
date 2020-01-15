@@ -8,6 +8,11 @@ A ReactJS web application that fetches updated news from different sources using
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 Clone or Download as Zip then run **npm install** and **npm client-install** to install dependencies
+
+## Note
+Create variables.env file at the root file of the project with the following details: 
+![ScreenShot](https://user-images.githubusercontent.com/32665778/72413866-babb6500-37ab-11ea-8d03-5a7fb70027c7.PNG)
+
 To start application please run **npm run dev**
 
 ### Prerequisites
