@@ -18,7 +18,7 @@ export default function App() {
           <Route exact path='/'>
             <Main />
           </Route>
-          <Route path='/news/:source_id' component={Articles}/>
+          <Route path='/news/:source_id/page/:page_num' component={Articles}/>
         </Switch>
       </Router>
     </Provider>

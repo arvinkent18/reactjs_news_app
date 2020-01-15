@@ -24,14 +24,19 @@ const styles = theme => {
 
 class Articles extends Component {
     state = {
+        id: null,
+        page: null,
         news: [],
     }
     componentDidMount() {
         const id = this.props.match.params.source_id;
-        fetch(`http://localhost:5000/news/`+id)
+        const pageNum = this.props.match.params.page_num;
+        fetch(`http://localhost:5000/news/`+id+`/page/`+pageNum)
             .then(response => response.json())
             .then(articles => {
                 this.setState({
+                    id,
+                    page: pageNum,
                     news: [...this.state.news, ...articles],
                 });
             }).catch(error => console.log(error));
