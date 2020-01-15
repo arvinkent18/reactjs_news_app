@@ -26,7 +26,7 @@ class Sources extends Component {
             <div>
                 <List>
                     {sources.map(source => 
-                        <ListItem key={source.id} button component={NavLink} to={`/source/${source.name}`}>
+                        <ListItem key={source.id} button component={NavLink} to={`/news/${source.id}`}>
                             <ListItemText primary={source.name} />
                         </ListItem>
                     )}

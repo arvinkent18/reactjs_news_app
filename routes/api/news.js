@@ -22,24 +22,28 @@ const router = express.Router();
  */
 const newsapi = new NewsAPI(process.env.NEWS_API_KEY);
 
-const fetchNews = (searchTerm, newsSource, pageNum) =>
-    newsapi.v2.everything({
-        q: searchTerm,
-        source: newsSource,
+const fetchTopHeadlines = (source, pageNum) =>
+    newsapi.v2.topHeadlines({
+        sources: source,
         language: 'en',
-        page: 1,
+        page: pageNum,
         pageSize: 10,
     });
 
 router.get('/', (req, res, next) => {    
-    console.log('test')
-    const topic = 'bitcoin';
-    console.log(topic);
-    const source = 'bbc-news';
-    console.log(source);
-    fetchNews(topic,source, 1)
+    fetchTopHeadlines('', 1)
         .then(response => {
-        res.json(response.articles);
+            res.json(response.articles);
+        })
+        .catch(error => console.log(`Failed to fetch top headlines: ${error}`)); 
+});
+
+router.get('/:source_id', (req, res, next) => {
+    const source = req.params.source_id;
+    console.log(source);
+    fetchTopHeadlines(source, 1)
+        .then(response => {
+            res.json(response.articles);
         })
         .catch(error => console.log(`Failed to fetch news: ${error}`));
 });

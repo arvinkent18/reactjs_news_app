@@ -8,6 +8,7 @@ import {
   Route
 } from "react-router-dom";
 import Main from './components/Main';
+import Articles from './components/Articles';
 
 export default function App() {
   return (
@@ -17,9 +18,7 @@ export default function App() {
           <Route exact path='/'>
             <Main />
           </Route>
-          <Route path='/:source_id'>
-            Test
-          </Route>
+          <Route path='/news/:source_id' component={Articles}/>
         </Switch>
       </Router>
     </Provider>
