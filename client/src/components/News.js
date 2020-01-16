@@ -8,8 +8,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import { connect } from 'react-redux';
 import { fetchNews } from '../actions/newsActions';
+import Pagination from 'material-ui-flat-pagination';
 
 const styles = theme => {
   console.log(theme);
@@ -24,6 +26,15 @@ const styles = theme => {
 };
 
 class News extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { offset: 0 };
+  }
+
+  handleClick(offset) {
+    this.setState({ offset });
+  }
+
   componentDidMount() {
     this.props.dispatch(fetchNews());
   }
@@ -41,8 +52,9 @@ class News extends Component {
 
     return (
       <div>
+        <CssBaseline />
         <Grid container direction="row">
-          {news.map(article => 
+          {news.articles.map(article => 
           <Grid item xs={4}>
             <Card className={classes.card}>
               <CardActionArea>
@@ -69,9 +81,16 @@ class News extends Component {
                 </Button>
               </CardActions>
             </Card>
-          </Grid>
+          </Grid>  
           )}
         </Grid>
+        <h1>Showing 10 of {news.totalResults} entries</h1>
+        <Pagination
+            limit={10}
+            offset={2}
+            total={news.totalResults}
+            onClick={(e, offset) => this.handleClick(offset)}
+        />
       </div>
     );
   }

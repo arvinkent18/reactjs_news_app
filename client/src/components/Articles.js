@@ -46,7 +46,7 @@ class Articles extends Component {
             <div>{sourceId}
             <Typography variant="headline" color="inherit"></Typography>
                 <Grid container direction="row">
-                    {news.map(article => 
+                    {news.articles.map(article => 
                     <Grid item xs={4}>
                         <Card className={classes.card}>
                         <CardActionArea>

@@ -29,7 +29,6 @@ const fetchSources = () =>
 router.get('/', (req, res, next) => {
     fetchSources()
         .then(response => {
-            console.log(response.sources)
             res.json(response.sources);
         })
         .catch(error => console.log(`Failed to fetch sources: ${error}`));

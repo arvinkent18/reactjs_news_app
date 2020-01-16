@@ -15,38 +15,47 @@ const NewsAPI = require('newsapi');
  */
 const router = express.Router();
 
-/**
- * news api
- * @type {object}
- * @const
- */
-const newsapi = new NewsAPI(process.env.NEWS_API_KEY);
+const fetch = require('node-fetch');
 
-const fetchTopHeadlines = (source, pageNum) =>
-    newsapi.v2.everything({
-        sources: source,
-        language: 'en',
-        page: pageNum,
-        pageSize: 10,
-    });
-
-router.get('/', (req, res, next) => {    
-    fetchTopHeadlines('bbc-news', 1)
-        .then(response => {
-            res.json(response.articles);
+const fetchTopHeadlines = (res, pageNum = 1) =>
+    fetch(`https://newsapi.org/v2/top-headlines?country=us&pageSize=10&page=${pageNum}&apiKey=${process.env.NEWS_API_KEY}`)
+        .then(res => {
+            if (res.status >= 400) {
+                throw new Error('Bad response from server');
+            }
+            return res.json();
         })
-        .catch(error => console.log(`Failed to fetch top headlines: ${error}`)); 
+        .then(news => {
+            res.json(news);
+        })
+        .catch(error => console.log(`Failed to fetch top headlines: ${error}`));
+        
+const fetchEverything = (res, source = '', pageNum = 1) => 
+    fetch(`https://newsapi.org/v2/everything?sources=${source}&pageSize=10&page=${pageNum}&apiKey=${process.env.NEWS_API_KEY}`)
+    .then(res => {
+        if (res.status >= 400) {
+            throw new Error('Bad response from server');
+        }
+        return res.json();
+    })
+    .then(news => {
+        res.json(news);
+    })
+    .catch(error => console.log(`Failed to fetch top headlines: ${error}`));
+
+router.get('/', (req, res, next) => {  
+    fetchTopHeadlines(res);
+});
+
+router.get('/page/:page_num', (req, res, next) => {    
+    const pageNum = req.params.page_num;
+    fetchTopHeadlines(res, pageNum);
 });
 
 router.get('/:source_id/page/:page_num', (req, res, next) => {
     const source = req.params.source_id;
     const pageNum = req.params.page_num;
-    console.log(source);
-    fetchTopHeadlines(source, pageNum)
-        .then(response => {
-            res.json(response.articles);
-        })
-        .catch(error => console.log(`Failed to fetch news: ${error}`));
+    fetchEverything(res, source, pageNum);
 });
 
 module.exports = router;

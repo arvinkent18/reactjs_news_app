@@ -9,6 +9,7 @@ import {
   Route
 } from "react-router-dom";
 import Articles from './components/Articles';
+import News from './components/News';
 import Sidebar from './components/Sidebar';
 import NavBar from './components/NavBar';
 import Content from './components/Content';
@@ -47,6 +48,7 @@ class App extends Component {
                 </Grid>
               </Grid>
             </Route>
+            <Route path='/news/page/:page_num' component={News}/>
             <Route path='/news/:source_id/page/:page_num' component={Articles}/>
           </Switch>
         </Router>

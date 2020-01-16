@@ -30,7 +30,6 @@ export function fetchNews(source = '', pageNum) {
         .then(handleErrors)
         .then(res => res.json())
         .then(json => {
-            console.log(json);
             dispatch(fetchNewsBySource(json));
             return json;
         })
@@ -44,7 +43,6 @@ export function fetchNews(source = '', pageNum) {
         .then(handleErrors)
         .then(res => res.json())
         .then(json => {
-            console.log(json);
             dispatch(fetchNewsSuccess(json));
             return json;
         })

@@ -6,7 +6,7 @@ import {
   } from '../actions/newsActions';
   
   const initialState = {
-    items: [],
+    items: {articles: []},
     loading: false,
     error: null
   };
