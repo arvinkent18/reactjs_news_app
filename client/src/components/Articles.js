@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/styles';
-import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -9,6 +8,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { connect } from 'react-redux';
+import { fetchNews } from '../actions/newsActions';
 
 const styles = theme => {
     console.log(theme);
@@ -23,32 +24,29 @@ const styles = theme => {
 };
 
 class Articles extends Component {
-    state = {
-        id: null,
-        page: null,
-        news: [],
-    }
     componentDidMount() {
-        const id = this.props.match.params.source_id;
+        const sourceId = this.props.match.params.source_id;
         const pageNum = this.props.match.params.page_num;
-        fetch(`http://localhost:5000/news/`+id+`/page/`+pageNum)
-            .then(response => response.json())
-            .then(articles => {
-                this.setState({
-                    id,
-                    page: pageNum,
-                    news: [...this.state.news, ...articles],
-                });
-            }).catch(error => console.log(error));
+
+        this.props.dispatch(fetchNews(sourceId, pageNum));
     }
 
     render() {
-        const { classes } = this.props;
+        const { classes, error, loading, news, sourceId } = this.props;
+
+        if (error) {
+            return <div>Error! {error.message}</div>;
+        }
+    
+        if (loading) {
+            return <div>Loading...</div>;
+        }
         
         return (
-            <div>
+            <div>{sourceId}
+            <Typography variant="headline" color="inherit"></Typography>
                 <Grid container direction="row">
-                    {this.state.news.map(article => 
+                    {news.map(article => 
                     <Grid item xs={4}>
                         <Card className={classes.card}>
                         <CardActionArea>
@@ -83,8 +81,11 @@ class Articles extends Component {
     }
 }
 
-Articles.propTypes = {
-    classes: PropTypes.object.isRequired,
-}
+const mapStateToProps = (state, ownProps) => ({
+    news: state.news.items,
+    id: state.news[ownProps.source_id],
+    loading: state.news.loading,
+    error: state.news.error
+});
 
-export default withStyles(styles)(Articles);
+export default connect(mapStateToProps)(withStyles(styles)(Articles));

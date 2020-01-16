@@ -1,6 +1,7 @@
 import {
     FETCH_NEWS_BEGIN,
     FETCH_NEWS_SUCCESS,
+    FETCH_NEWS_BY_SOURCE,
     FETCH_NEWS_FAILURE
   } from '../actions/newsActions';
   
@@ -20,6 +21,13 @@ import {
         };
   
       case FETCH_NEWS_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          items: action.payload.news
+        };
+
+      case FETCH_NEWS_BY_SOURCE:
         return {
           ...state,
           loading: false,

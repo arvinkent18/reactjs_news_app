@@ -25,7 +25,7 @@ const styles = theme => {
 
 class News extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchNews());;
+    this.props.dispatch(fetchNews());
   }
 
   render() {
