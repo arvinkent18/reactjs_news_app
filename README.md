@@ -20,6 +20,7 @@ To start application please run **npm run dev**
 ![ScreenShot](https://user-images.githubusercontent.com/32665778/72456898-83c36e80-3800-11ea-9b6d-f625453836b5.png)
 
 ## Pagination
+**http://localhost:3000/news/page/:pagenumber** pagenumber for page
 **http://localhost:3000/news/:source/page/:pagenumber** source = source's name and pagenumber for page
 
 ### Prerequisites
