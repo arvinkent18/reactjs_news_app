@@ -15,6 +15,13 @@ Create variables.env file at the root directory of the project with the followin
 
 To start application please run **npm run dev**
 
+## Landing Page
+**http://localhost:3000**
+![ScreenShot](https://user-images.githubusercontent.com/32665778/72456898-83c36e80-3800-11ea-9b6d-f625453836b5.png)
+
+## Pagination
+**http://localhost:3000/news/:source/page/:pagenumber** source = source's name and pagenumber for page
+
 ### Prerequisites
 
 * [Node.js](https://www.nodejs.org/)
@@ -29,6 +36,7 @@ To start application please run **npm run dev**
 * [Node.js](https://nodejs.org/) - Dependency management/back-end used
 * [ReactJS](https://reactjs.org/) - The front-end web framework used
 * [Redux](https://redux.js.org/) - The state manager used
+* [Material UI](https://material-ui.com/) - The React component for material design
 
 ## Authors
 
