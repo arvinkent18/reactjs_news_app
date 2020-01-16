@@ -7,14 +7,9 @@ export const fetchNewsBegin = () => ({
   type: FETCH_NEWS_BEGIN
 });
 
-export const fetchNewsSuccess = news => ({
+export const fetchNewsSuccess = (news, source = '', pageNum = 1) => ({
   type: FETCH_NEWS_SUCCESS,
-  payload: { news }
-});
-
-export const fetchNewsBySource = (news, id) => ({
-  type: FETCH_NEWS_BY_SOURCE,
-  payload: { news, id }
+  payload: { news, source, pageNum }
 });
 
 export const fetchNewsFailure = error => ({
@@ -23,14 +18,27 @@ export const fetchNewsFailure = error => ({
 });
 
 export function fetchNews(source = '', pageNum) {
-    if (source != '') {
+    if (pageNum != 1 && source != '') {
       return dispatch => {
         dispatch(fetchNewsBegin());
         return fetch('/news/'+source+'/page/'+pageNum)
         .then(handleErrors)
         .then(res => res.json())
         .then(json => {
-            dispatch(fetchNewsBySource(json));
+            dispatch(fetchNewsSuccess(json));
+            return json;
+        })
+        .catch(error => dispatch(fetchNewsFailure(error)));
+      };
+    }
+    else if (pageNum != 1) {
+      return dispatch => {
+        dispatch(fetchNewsBegin());
+        return fetch('/news/page/'+pageNum)
+        .then(handleErrors)
+        .then(res => res.json())
+        .then(json => {
+            dispatch(fetchNewsSuccess(json));
             return json;
         })
         .catch(error => dispatch(fetchNewsFailure(error)));

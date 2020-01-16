@@ -26,13 +26,6 @@ import {
           loading: false,
           items: action.payload.news
         };
-
-      case FETCH_NEWS_BY_SOURCE:
-        return {
-          ...state,
-          loading: false,
-          items: action.payload.news
-        };
   
       case FETCH_NEWS_FAILURE:
         return {

@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
 import { fetchNews } from '../actions/newsActions';
+import Pagination from 'material-ui-flat-pagination';
 
 const styles = theme => {
     console.log(theme);
@@ -27,12 +28,16 @@ class Articles extends Component {
     componentDidMount() {
         const sourceId = this.props.match.params.source_id;
         const pageNum = this.props.match.params.page_num;
-
-        this.props.dispatch(fetchNews(sourceId, pageNum));
+        if (sourceId != '') {
+            this.props.dispatch(fetchNews(sourceId, pageNum));
+        }
+        else {
+            this.props.dispatch(fetchNews(pageNum));
+        }
     }
 
     render() {
-        const { classes, error, loading, news, sourceId } = this.props;
+        const { classes, error, loading, news } = this.props;
 
         if (error) {
             return <div>Error! {error.message}</div>;
@@ -43,7 +48,7 @@ class Articles extends Component {
         }
         
         return (
-            <div>{sourceId}
+            <div>
             <Typography variant="headline" color="inherit"></Typography>
                 <Grid container direction="row">
                     {news.articles.map(article => 
@@ -76,6 +81,13 @@ class Articles extends Component {
                     </Grid>
                     )}
                 </Grid>
+                <h1>Showing 10 of {news.totalResults} entries</h1>
+                <Pagination
+                    limit={10}
+                    offset={2}
+                    total={news.totalResults}
+                    onClick={(e, offset) => this.handleClick(offset)}
+                />
             </div>
         )
     }

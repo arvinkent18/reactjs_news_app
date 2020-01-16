@@ -48,7 +48,7 @@ class App extends Component {
                 </Grid>
               </Grid>
             </Route>
-            <Route path='/news/page/:page_num' component={News}/>
+            <Route path='/news/page/:page_num' component={Articles}/>
             <Route path='/news/:source_id/page/:page_num' component={Articles}/>
           </Switch>
         </Router>
