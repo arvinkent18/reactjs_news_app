@@ -18,7 +18,7 @@ export const fetchNewsFailure = error => ({
 });
 
 export function fetchNews(source = '', pageNum) {
-    if (pageNum != 1 && source != '') {
+    if (pageNum !== 1 && source !== '') {
       return dispatch => {
         dispatch(fetchNewsBegin());
         return fetch('/news/'+source+'/page/'+pageNum)
@@ -31,7 +31,7 @@ export function fetchNews(source = '', pageNum) {
         .catch(error => dispatch(fetchNewsFailure(error)));
       };
     }
-    else if (pageNum != 1) {
+    else if (pageNum !== 1) {
       return dispatch => {
         dispatch(fetchNewsBegin());
         return fetch('/news/page/'+pageNum)

@@ -1,7 +1,6 @@
 import {
     FETCH_NEWS_BEGIN,
     FETCH_NEWS_SUCCESS,
-    FETCH_NEWS_BY_SOURCE,
     FETCH_NEWS_FAILURE
   } from '../actions/newsActions';
   

@@ -28,7 +28,7 @@ class Articles extends Component {
     componentDidMount() {
         const sourceId = this.props.match.params.source_id;
         const pageNum = this.props.match.params.page_num;
-        if (sourceId != '') {
+        if (sourceId !== '') {
             this.props.dispatch(fetchNews(sourceId, pageNum));
         }
         else {
@@ -37,7 +37,7 @@ class Articles extends Component {
     }
 
     render() {
-        const { classes, error, loading, news } = this.props;
+        const { classes, error, loading, news, sourceId, pageNum } = this.props;
 
         if (error) {
             return <div>Error! {error.message}</div>;
@@ -48,9 +48,10 @@ class Articles extends Component {
         }
         
         return (
-            <div>
+        <div>
             <Typography variant="headline" color="inherit"></Typography>
                 <Grid container direction="row">
+                    {pageNum}{sourceId}
                     {news.articles.map(article => 
                     <Grid item xs={4}>
                         <Card className={classes.card}>

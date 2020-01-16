@@ -39,6 +39,7 @@ const fetchEverything = (res, source = '', pageNum = 1) =>
         return res.json();
     })
     .then(news => {
+        console.log(source);
         res.json(news);
     })
     .catch(error => console.log(`Failed to fetch top headlines: ${error}`));
